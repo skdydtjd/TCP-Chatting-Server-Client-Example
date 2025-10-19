@@ -18,7 +18,7 @@ int main()
 {
 	WSADATA wsa;
 
-	if (WSAStartup(MAKEWORD(2, 2), &wsa)) // À©¼Ó ÃÊ±âÈ­
+	if (WSAStartup(MAKEWORD(2, 2), &wsa)) // ìœˆì† ì´ˆê¸°í™”
 		err_quit("WSAStartup");
 
 	SOCKET s_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -44,10 +44,10 @@ int main()
 			break;
 
 		send(s_sock, buf, strlen(buf), 0);
-
 	}
+	
 	closesocket(s_sock);
-	WSACleanup(); //À©¼Ó Á¾·á
+	WSACleanup(); //ìœˆì† ì¢…ë£Œ
 	cout << "Main: end case" << endl;
 
 	return 0;
@@ -77,7 +77,7 @@ unsigned  _stdcall DisMes(LPVOID arg)
 
 void err_display(const char* mes)
 {
-	LPVOID buf; // formatmessage°¡ Ãâ·ÂÇÒ ¿¡·¯ ¹®ÀÚ¿­À» ÀúÀåÇÑ ¸Ş¸ğ¸®ÀÇ ÁÖ¼Ò
+	LPVOID buf; // formatmessageê°€ ì¶œë ¥í•  ì—ëŸ¬ ë¬¸ìì—´ì„ ì €ì¥í•œ ë©”ëª¨ë¦¬ì˜ ì£¼ì†Œ
 
 	FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL,
 		WSAGetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&buf, 0, NULL);
@@ -89,7 +89,7 @@ void err_display(const char* mes)
 
 void err_quit(const char* mes)
 {
-	LPVOID buf; // formatmessage°¡ Ãâ·ÂÇÒ ¿¡·¯ ¹®ÀÚ¿­À» ÀúÀåÇÑ ¸Ş¸ğ¸®ÀÇ ÁÖ¼Ò
+	LPVOID buf; // formatmessageê°€ ì¶œë ¥í•  ì—ëŸ¬ ë¬¸ìì—´ì„ ì €ì¥í•œ ë©”ëª¨ë¦¬ì˜ ì£¼ì†Œ
 
 	FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL,
 		WSAGetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&buf, 0, NULL);
