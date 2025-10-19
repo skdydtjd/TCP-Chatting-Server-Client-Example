@@ -23,6 +23,7 @@ int main()
     WSAStartup(MAKEWORD(2, 2), &wsa);
 
     SOCKET lsock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    
     if (lsock == INVALID_SOCKET)
         return -1;
 
@@ -37,13 +38,13 @@ int main()
     //lsock, event object
     sarr[noc] = lsock;
     earr[noc] = WSACreateEvent();
+    
     if (WSAEventSelect(sarr[noc], earr[noc], FD_ACCEPT))
     {
         cout << "WSAEventSelect listen socket case" << endl;
         return -1;
     }
     noc++;
-
 
     if (listen(lsock, SOMAXCONN))
         return -1;
