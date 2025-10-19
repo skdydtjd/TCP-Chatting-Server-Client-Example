@@ -164,7 +164,7 @@ void Echo_Serv(int idx)
     cout << "From client " << buf;
     send(sarr[idx], buf, recvlen, 0);
 
-    // Ãß°¡ÇÑ ºÎºÐ
+    // ì¶”ê°€í•œ ë¶€ë¶„
     for (int i = 1; i < noc; i++)
     {
         if (i != idx)
